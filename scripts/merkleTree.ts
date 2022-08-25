@@ -8,9 +8,12 @@ async function main() {
 
     
     const addresses = await  [add1.address, add2.address, add3.address, add4.address, add5.address, add6.address, add7.address, add8.address, add9.address, add10.address];
-    const leafnode = await addresses.map(addr => keccak256(addr));
-    const markleTree = new MerkleTree(leafnode, keccak256, {sortPairs: true});
-    console.log(markleTree);
+    const leafnode =  addresses.map(addr => keccak256(addr));
+    const markleTree =  new MerkleTree(leafnode, keccak256, {sortPairs: true});
+    console.log("Merkle tree arrays", markleTree);
+    console.log("Merkle tree", markleTree.toString());
+    const rootHAsh = markleTree.getRoot();
+    console.log("The root hash",  rootHAsh);
 
 }
 
